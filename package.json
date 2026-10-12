@@ -1,0 +1,26 @@
+{
+  "name": "autoapply-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A consent-first AI job application assistant for Chrome",
+  "workspaces": [
+    "extension",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n API,EXT -c blue,magenta \"npm run dev -w backend\" \"npm run dev -w extension\"",
+    "dev:backend": "npm run dev -w backend",
+    "dev:extension": "npm run dev -w extension",
+    "build": "npm run build -w extension",
+    "check": "npm run check -w backend && npm run check -w extension",
+    "test": "npm run test -w backend",
+    "package:extension": "npm run build -w extension && node scripts/package-extension.mjs"
+  },
+  "devDependencies": {
+    "archiver": "^7.0.1",
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20.16.0"
+  }
+}
